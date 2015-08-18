@@ -1,0 +1,21 @@
+{% extends 'AppBundle:Test:index.html.twig' %}
+
+{% block title %}<title> Test it </title>{% endblock %}
+
+{% block content %}
+
+<ul>
+<li> Request: ( {{res}} ) </li>
+<li> URI: {{uri}} </li>
+<li> foo: {{foo}} </li>
+<li> get : {{get}} </li>
+<li> post: {{post}} </li>
+<li> upload_file_foo : {{upload_file_foo}} </li>
+<li> PHPSESSID : {{cookie_session_id}} </li>
+<li> header_host : {{header_host}} </li>
+<li> header_content_type : {{header_content_type}} </li>
+<li> method : {{method}} </li>
+<li> language : {{language}} </li>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends '::base.html.twig' %}
+
+{% block description %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Books">
+{% endblock %}
+
+{% block title %}Books, Readings{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/foundation.css') }}"/>
+
+{% endblock %}
+
+{% block body %}
+    {{ include ('AppBundle:Default:nav.html.twig', {'active': active}) }}
+
+    <div class="row">
+        <div class="small-12 columns">
+            {% for type, messages in app.session.flashBag.all %}
+                {% for message in messages %}
+                    <div class="alert-box {{ type }}">{{ message }}</div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+
+    {% block content %}
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>My Books</h1>
+              <p>According to an unexhaustive statistics, till {{"now"|date('Y-m-d')}}, we collects {{book.summary.bc|number_format(0,'.',',')}} books, about {{book.summary.wc|number_format(0,'.',',')}},000 words and {{book.summary.pc|number_format(0,'.',',')}} pages.</p>
+              <p>The most recent ({{book.last.purchdate|date('Y－m－d')}}) book collected is {{book.last.author}}'s <a href="{{path('book_detail', {'id':book.last.id})}}">{{book.last.title}}</a>.</p>
+              <p><a class="btn btn-large btn-primary" href="{{ path('book_list') }}"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;View all books</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>My Readings</h1>
+              <p>Till {{"now"|date('Y-m-d')}}, {{read.summary.rc|number_format(0,'.',',')}} pieces of readings.</p>
+              <p>The latest ({{read.last.datein|date('Y－m－d')}}) commented book is <a href="{{path('book_detail', {'id':book.last.id})}}">{{read.book.title}}</a>, titled as <a href="{{read.last.uri}}">{{read.last.title}}</a>.</p>
+              <p><a class="btn btn-large btn-primary" href="{{ path('reading_list') }}"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;View all readings</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div><!-- /.carousel -->
+    <div class="jumbotron">
+        <h3>Quote Of The Day</h3>
+        {{qotd.quote}} -- <small><em>{{qotd.source}}</em></small>
+    </div>
+
+    {% endblock %}
+
+    {{ include ('AppBundle:Default:footer.html.twig') }}
+
+    {% block javascripts %}
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/holder.js') }}"></script>
+    {% endblock %}
+{% endblock %}

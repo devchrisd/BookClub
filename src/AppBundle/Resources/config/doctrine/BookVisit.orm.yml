@@ -1,0 +1,18 @@
+AppBundle\Entity\BookVisit:
+    type: entity
+    table: book_visit
+    id:
+        bid:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            id: true
+        visitwhen:
+            type: bigint
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+    lifecycleCallbacks: {  }

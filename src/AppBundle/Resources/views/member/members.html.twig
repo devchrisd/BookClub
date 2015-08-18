@@ -1,0 +1,67 @@
+{% set active=6 %}
+{% extends 'AppBundle:Default:index.html.twig' %}
+
+{% block title "Member's list" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/global.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="small-12 columns">
+            <h2>Manage Members <small>found: {{ members|length }}</small></h2>
+
+            <div class="small-6 end">
+                <a href="{{ path('member_add') }}" class="button success tiny">Add</a>
+            </div>
+        {% if members|length %}
+            <table>
+                <thead>
+                    <th></th>
+                    <th>Username</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                {% for member in members %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td><a class='profile' href="{{ path('member_profile', { username: member.username }) }}">{{ member.username }}</a></td>
+                        <td>
+                            <a class="button secondary tiny" href="#delete-{{ member.username }}" data-reveal-id="delete-{{ loop.index }}">delete</a>
+
+                            <div id="delete-{{ loop.index }}" class="reveal-modal medium" data-reveal>
+                                <h3>Are you sure you want to delete <b>{{ member.username }}</b> forever?</h3>
+                                <form class="row collapse" action="{{ path('member_delete', { username: member.username }) }}" method="post">
+                                    <div>
+                                        <label>
+                                            <input class="expanded button alert" type="submit" value="yes, do it">
+                                        </label>
+                                    </div>
+                                </form>
+                                <a class="close-reveal-modal">&#215;</a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert-box alert">No members were found</div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/foundation/foundation.js') }}"></script>
+    <script src="{{ asset('js/foundation/foundation.topbar.js') }}"></script>
+    <script src="{{ asset('js/foundation/foundation.reveal.js') }}"></script>
+    <script>
+        $(document).foundation();
+    </script>
+{% endblock %}

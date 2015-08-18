@@ -1,0 +1,6 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+bookclub:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /

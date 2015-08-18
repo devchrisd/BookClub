@@ -1,0 +1,44 @@
+AppBundle\Entity\BookHeadline:
+    type: entity
+    repositoryClass: AppBundle\Entity\BookHeadlineRepository
+    table: book_headline
+    indexes:
+        IDX_F91777E436BB5955:
+            columns:
+                - bookid
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        reviewtitle:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        createAt:
+            type: date
+            nullable: false
+            comment: ''
+            column: create_at
+        show:
+            type: boolean
+            nullable: false
+            comment: ''
+    manyToOne:
+        bookid:
+            targetEntity: BookBook
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                bookid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

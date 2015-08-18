@@ -1,0 +1,42 @@
+<div class="navbar-wrapper">
+    <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="container row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path ("home") }}">BookClub</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li{% if active==1 %} class="active"{% endif %}><a href="{{ path ("home") }}">Home</a></li>
+                        <li{% if active==2 %} class="active"{% endif %}><a href="{{ path ('book_list') }}">Books</a></li>
+                        <li{% if active==3 %} class="active"{% endif %}><a href="{{ path ('reading_list') }}">Readings</a></li>
+                        <li{% if active==6 %} class="active"{% endif %}><a href="{{ path ('member') }}">Members</a></li>
+                        <li{% if active==4 %} class="active"{% endif %}><a href="{{ path ('contact') }}">Contact Me</a></li>
+
+                        <li class="right has-form">
+                            <form action="{{ path('member_search') }}" method="get">
+                                <div>
+                                    <div class="small-9 columns">
+                                        <label>
+                                            <input class='search' type="text" name="search"{{ keyword is defined ? " value=#{keyword}" }}>
+                                        </label>
+                                    </div>
+                                    <div class="small-3 columns">
+                                        <button type="submit" class="button">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

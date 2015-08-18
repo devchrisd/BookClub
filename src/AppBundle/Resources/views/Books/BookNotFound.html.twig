@@ -1,0 +1,17 @@
+{% set active=1 %}
+{% extends 'AppBundle:Default:index.html.twig' %}
+
+{% block title %} Book Details | Book Not Found...{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>I am confused!</h1>
+        <p>The book ID <strong><u>{{id}}</u></strong> just inputed was not in the catalog.</p>
+        <p>Sorry to say that our speed of book collection is not able to catch up with your reading pace. Please try again sometime later. </p>
+        <p>Or, you can just visit other modules of this site. </p>
+    </div>
+
+</div>
+
+{% endblock %}

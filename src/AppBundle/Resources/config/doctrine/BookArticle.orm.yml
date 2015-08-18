@@ -1,0 +1,30 @@
+AppBundle\Entity\BookArticle:
+    type: entity
+    table: book_article
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        datein:
+            type: date
+            nullable: false
+            comment: ''
+        uri:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

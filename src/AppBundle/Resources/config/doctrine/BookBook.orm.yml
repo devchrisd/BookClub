@@ -1,0 +1,138 @@
+AppBundle\Entity\BookBook:
+    type: entity
+    repositoryClass: AppBundle\Entity\BookRepository
+    table: book_book
+    indexes:
+        IDX_D278E839741D53CD:
+            columns:
+                - place
+        IDX_D278E8399CE8D546:
+            columns:
+                - publisher
+    id:
+        id:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+        author:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+        region:
+            type: string
+            nullable: false
+            length: 40
+            fixed: false
+            comment: ''
+        copyrighter:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        translated:
+            type: boolean
+            nullable: false
+            comment: ''
+        purchdate:
+            type: date
+            nullable: false
+            comment: ''
+        price:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+        pubdate:
+            type: date
+            nullable: false
+            comment: ''
+        printdate:
+            type: date
+            nullable: false
+            comment: ''
+        ver:
+            type: string
+            nullable: false
+            length: 5
+            fixed: false
+            comment: ''
+        deco:
+            type: string
+            nullable: false
+            length: 6
+            fixed: false
+            comment: ''
+        kword:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        page:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        isbn:
+            type: string
+            nullable: false
+            length: 17
+            fixed: false
+            comment: ''
+        category:
+            type: string
+            nullable: false
+            length: 12
+            fixed: false
+            comment: ''
+        location:
+            type: string
+            nullable: false
+            length: 2
+            fixed: false
+            comment: ''
+        intro:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+        instock:
+            type: boolean
+            nullable: false
+            comment: ''
+    manyToOne:
+        place:
+            targetEntity: BookPlace
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                place:
+                    referencedColumnName: id
+            orphanRemoval: false
+        publisher:
+            targetEntity: BookPublisher
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                publisher:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

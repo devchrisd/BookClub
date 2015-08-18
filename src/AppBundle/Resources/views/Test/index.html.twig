@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block description %}<meta name="description" content="Test">{% endblock %}
+    <meta name="author" content="cding">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    {% block title %}<title> Test index </title>{% endblock %}
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.css" rel="stylesheet">
+  </head>
+
+  <body>
+{% block content %}
+
+<ul>
+<li> Request: ( {{res}} ) </li>
+
+<li> foo: {{foo}} </li>
+</ul>
+
+{% endblock %}
+<!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/holder.js') }}"></script>
+  </body>
+</html>

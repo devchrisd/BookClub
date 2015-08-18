@@ -1,0 +1,13 @@
+{% extends 'AppBundle:member:members.html.twig' %}
+
+{% block title 'Add member' %}
+
+{% block content %}
+    <div class="row">
+        <div class="small-6 columns">
+            <h2>Add member</h2>
+
+            {{ form(form, { action: path('member_add'), attr: { novalidate: 'novalidate' } }) }}
+        </div>
+    </div>
+{% endblock %}
